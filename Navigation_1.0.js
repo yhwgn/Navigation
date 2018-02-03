@@ -18,8 +18,8 @@ function useItem(x, y, z){
 }
 
 function modTick(){
-    player = {z=getPlayerZ(), x=getPlayerX()};
-    point = {z=bz, x=bx};
+    var player = {z:getPlayerZ(), x:getPlayerX()};
+    var point = {z:bz, x:bx};
     clientMessage(getAngle(player, block)+"");
 }
 
