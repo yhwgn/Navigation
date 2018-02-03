@@ -19,5 +19,5 @@ function modTick(){
     ly = y-py;
     lx = x-px;
     hptn = Math.sqrt(lz*lz+lx*lx);
-    clientMessage(Math.acos(((lz*lz)+(lx*lx)-(hptn*hptn))/(2*lz*lx)));
+    clientMessage(((lz*lz)+(lx*lx)-(hptn*hptn))/(2*lz*lx));
 }
