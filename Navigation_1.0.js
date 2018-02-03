@@ -1,23 +1,39 @@
 var pz, py, px;
-var z, y, x;
+var bz, by, bx;
 var lz, ly, lx;
 var hptn;
 var quadrant;
 var angle;
 
 function newLevel(){
-    z = 0;
-    y = 0;
-    x = 0;
+    bz = 0;
+    by = 0;
+    bx = 0;
+}
+
+function useItem(x, y, z){
+    bx = x;
+    by = y;
+    bz = z;
 }
 
 function modTick(){
-    pz = getPlayerZ();
-    py = getPlayerY();
-    px = getPlayerX();
-    lz = z-pz;
-    ly = y-py;
-    lx = x-px;
-    hptn = Math.sqrt(lz*lz+lx*lx);
-    clientMessage(((lz*lz)+(lx*lx)-(hptn*hptn))/(2*lz*lx));
+    player = {z=getPlayerZ(), x=getPlayerX()};
+    point = {z=bz, x=bx};
+    clientMessage(getAngle(player, block)+"");
+}
+
+function getAngle(player, point){
+    var z = point.z-player.z;
+    var x = point.x-player.x;
+    var hptn = Math.sqrt((z*z)+(x*x));
+    var angle = Matn.acos(z/hptn);
+    if(z<0){
+        if(x>0){
+            angle = Math.PI-angle;
+        } else {
+            angle = ((-1)*Maht.PI)-angle;
+        }
+    }
+    return angle;
 }
