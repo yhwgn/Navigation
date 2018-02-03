@@ -12,9 +12,9 @@ function newLevel(){
 }
 
 function modTick(){
-    pz = Player.getZ();
-    py = player.getY();
-    px = Player.getX();
+    pz = getPlayerZ();
+    py = getPlayerY();
+    px = getPlayerX();
     lz = z-pz;
     ly = y-py;
     lx = x-px;
