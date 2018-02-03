@@ -23,12 +23,12 @@ function getAngle(player, point){
     var x = point.x-player.x;
     var hptn = Math.sqrt((z*z)+(x*x));
     var angle = Math.acos(z/hptn);
-    if(z<0){
+    /*if(z<0){
         if(x>0){
             angle = Math.PI-angle;
         } else {
             angle = ((-1)*Math.PI)-angle;
         }
-    }
+    }*/
     return angle;
 }
