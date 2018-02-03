@@ -1,9 +1,4 @@
-var pz, py, px;
 var bz, by, bx;
-var lz, ly, lx;
-var hptn;
-var quadrant;
-var angle;
 
 function newLevel(){
     bz = 0;
@@ -20,7 +15,7 @@ function useItem(x, y, z){
 function modTick(){
     var player = {z:getPlayerZ(), x:getPlayerX()};
     var point = {z:bz, x:bx};
-    clientMessage(getAngle(player, block)+"");
+    clientMessage(getAngle(player, point)+"");
 }
 
 function getAngle(player, point){
