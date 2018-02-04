@@ -51,7 +51,8 @@ var sword = [
 	4, 4, 9, 8, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0,
 	4, 5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var colorCode = [Color.argb(255, 14, 63, 54),
+var colorCode = [Color.argb(0, 0, 0, 0),
+		 Color.argb(255, 14, 63, 54),
 		 Color.argb(255, 51, 235, 203),
 		 Color.argb(255, 43, 199, 172),
 		 Color.argb(255, 8, 37, 32),
@@ -69,7 +70,7 @@ try{
 	for(var y=0; y<16; y++){
 		for(var x=0; x<16; x++){
 			if(sword[i] != 0){
-				var color = colorCode[sword[i]-1];
+				var color = colorCode[sword[i]];
 				var paint = new Paint(Color.argb(255, 50, 180, 230));
 				canvas.drawPoint(x, y, paint);
 			}
