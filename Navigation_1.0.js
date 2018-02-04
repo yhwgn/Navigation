@@ -65,7 +65,6 @@ var colorCode = [Color.rgb(14, 63, 54),
 try{
 	var bitmap = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
 	var canvas = new Canvas(bitmap);
-	var paint = new Paint();
 	var i=0;
 	for(var y=0; y<16; y++){
 		for(var x=0; x<16; x++){
