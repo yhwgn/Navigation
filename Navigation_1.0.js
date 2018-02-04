@@ -17,7 +17,7 @@ var Color = android.graphics.Color;
 var Bitmap = android.graphics.Bitmap;
 var Canvas = android.graphics.Canvas;
 var Paint = android.graphics.Paint;
-var BitmapDrawable = android.graphics.drawable.BitmapDrawable;
+var PaintDrawable = android.graphics.drawable.PaintDrawable;
 var ColorDrawable = android.graphics.drawable.ColorDrawable;
 
 var DialogInterface = android.content.DialogInterface;
