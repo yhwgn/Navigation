@@ -191,18 +191,18 @@ function makeBtn(){
 function openList(){
 	ui(function(){
 		try{
-			var builder = new AlertDialog.Builder(ctx);
-			var dialog = builder.create();
-			builder.setSingleChoiceItems(pointLoc, selectNumber, new DialogInterface.OnClickListener(){
+			var dialog = new AlertDialog.Builder(ctx);
+			dialog.setTitle("Navigation_1.0");
+			dialog.setSingleChoiceItems(pointLoc, selectNumber, new DialogInterface.OnClickListener(){
 				onClick: function(d, i){
 					selectNumber = i;
 					if(i==0) d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(false);
 					else d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(true);
 				}
 			});
-			builder.setNegativeButton("삭제", null);
-			builder.setPositiveButton("닫기", null);
-			builder.setNeutralButton("추가", new DialogInterface.OnClickListener(){
+			dialog.setNegativeButton("삭제", null);
+			dialog.setPositiveButton("닫기", null);
+			dialog.setNeutralButton("추가", new DialogInterface.OnClickListener(){
 				onClick: function(d){
 					var name = new EditText(ctx);
 					var add = new AlertDialog.Builder(ctx);
