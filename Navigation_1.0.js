@@ -211,7 +211,7 @@ function openList(){
 					add.setPositiveButton("저장", new DialogInterface.OnClickListener(){
 						onClick: function(d){
 							try{
-								if(!name.getText().toString().equals("")){
+								if(!(name.getText().toString().equals(""))){
 									pointLoc.push(getPlayerX() + ":" + getPlayerY() + ":" + getPlayerZ());
 								} else {
 									ts("목적지 이름을 작성해 주십시오.");
