@@ -34,11 +34,12 @@ var NV1_x = 8;
 var NV1_y = 80;
 var bz, by, bx;
 
-function newLevel(){bz = 0;
+function newLevel(){
+    bz = 0;
     by = 0;
     bx = 0;
     if(ModPE.readData("NV1_start") != "Navigation_1.0 - 여흥") {
-	    ModPE.saveData("NV1_start","Navigation_1.0 - 여흥");
+	ModPE.saveData("NV1_start","Navigation_1.0 - 여흥");
 		ModPE.saveData("NV1_x",NV1_x);
 		ModPE.saveData("NV1_y",NV1_y);
 		makeBtn();
