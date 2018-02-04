@@ -117,8 +117,8 @@ function makeBtn(){
 								//TODO
 							} else {
 								click = true;
-								ModPE.saveData("SW_x",x);
-								ModPE.saveData("SW_y",y);
+								ModPE.saveData("NV1_x",x);
+								ModPE.saveData("NV1_y",y);
 								ts("위치가 변경되었습니다.");
 							}
 							break;
@@ -130,7 +130,7 @@ function makeBtn(){
             		paintDrawable.setCornerRadius(dp(15));
 			btnWindow = new PopupWindow(btn,dp(40),dp(30));
             		btnWindow.setBackgroundDrawable(paintDrawable);
-			btnWindow.showAtLocation(ctx.getWindow().getDecorView(),Gravity.LEFT|Gravity.TOP,SW_x,SW_y);
+			btnWindow.showAtLocation(ctx.getWindow().getDecorView(),Gravity.LEFT|Gravity.TOP,NV1_x,NV1_y);
 		} catch(err) {
 			print(err);
 		}
