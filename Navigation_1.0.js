@@ -143,8 +143,8 @@ function makeBtn(){
 		try{
 			var btn = new Button(ctx);
 			var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
-      paintDrawable.setCornerRadius(dp(15));
-      btn.setBackgroundDrawable(paintDrawable);
+			paintDrawable.setCornerRadius(dp(15));
+			btn.setBackgroundDrawable(paintDrawable);
 			btn.setText("NV");
 			btn.setPadding(dp(-5), dp(-5), dp(-5), dp(-5));
 			btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 12);
@@ -192,7 +192,7 @@ function openList(){
 	ui(function(){
 		try{
 			var dialog = new AlertDialog.Builder(ctx);
-			dialog.setSingleChoiceItems(pointLoc, 0, new View.OnClickListener(){
+			dialog.setSingleChoiceItems(pointLoc, 0, new DialogInterface.OnClickListener(){
 				onClick: function(d, i){
 
 				}
