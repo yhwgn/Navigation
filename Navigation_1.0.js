@@ -67,7 +67,7 @@ try{
 	var canvas = new Canvas(bitmap);
 	var paint = new Paint();
 	var i=0;
-	for(var x=0; x<16; X++){
+	for(var x=0; x<16; x++){
 		for(var y=0; y<16; y++){
 			if(sword[i] != 0){
 				var color = colorCode[sword[i]-1];
