@@ -136,10 +136,11 @@ function getAngle(player, point){
 function makeBtn(){
 	ui(function(){
 		try{
-			/*var btn = new Button(ctx);
+			var btn = new Button(ctx);
 			var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
             		paintDrawable.setCornerRadius(dp(15));
-            		btn.setBackgroundDrawable(paintDrawable);
+			var dia = new android.graphics.drawable.BitmapDrawable(navigator);
+            		btn.setBackgroundDrawable(dia);
 			btn.setText("NV");
 			btn.setPadding(dp(-5), dp(-5), dp(-5), dp(-5));
 			btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 12);
@@ -174,11 +175,8 @@ function makeBtn(){
 					}
 					return true;
 				}
-			});*/
-			var iv = new android.widget.ImageView(ctx);
-			iv.setBitmapImage(navigator);
-			btnWindow = new PopupWindow(iv, dp(70), dp(70));
-			btnWindow.setBackgroundDrawable(new android.graphics.drawable.PaintDrawable(Color.RED));
+			});
+			btnWindow = new PopupWindow(btn, dp(70), dp(70));
 			btnWindow.showAtLocation(ctx.getWindow().getDecorView(),Gravity.LEFT|Gravity.TOP,NV1_x,NV1_y);
 		} catch(err) {
 			print("load btn" + err.lineNumber + "\n" + err);
