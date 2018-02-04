@@ -223,9 +223,7 @@ function openList(){
 			});
 			var dialog = builder.create();
 			dialog.show();
-			if(selectNumber==0) dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(false);
-			else dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(true);
-			var delet = dialog.create().getButton(AlertDialog.BUTTON_NEGATIVE);
+			var delet = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
 			if(selectNumber==0) delet.setEnabled(false);
 			else delet.setEnabled(true);
 		}catch(err){
