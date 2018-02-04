@@ -64,20 +64,24 @@ var colorCode = [Color.argb(0, 0, 0, 0),
 		 Color.argb(255, 104, 78, 30),
 		 Color.argb(255, 137, 103, 39)];
 
-
+try{
 	var canvas = new Canvas(navigater);
 	var i=0;
 	for(var y=0; y<16; y++){
 		for(var x=0; x<16; x++){
 			if(sword[i] != 0){
 				var color = colorCode[sword[i]];
-				var paint = new Paint(Color.argb(255, 50, 180, 230));
+				var paint = new Paint();
+				paint.setColor(color);
 				canvas.drawPoint(x, y, paint);
 			}
 			i++;
 		}
 	}
 	ts("로딩 완료");
+} catch(err) {
+	print(err);
+}
 
 
 function newLevel(){
