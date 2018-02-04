@@ -80,7 +80,7 @@ try{
 	navigater = bitmap;
 	ts("로딩 완료");
 } catch(err) {
-	print(err);
+	print("load img" + err.lineNumber + "\n" + err);
 }
 
 function newLevel(){
@@ -179,7 +179,7 @@ function makeBtn(){
 			btnWindow.setBackgroundDrawable(new android.graphics.drawable.BitmapDrawable(navigater));
 			btnWindow.showAtLocation(ctx.getWindow().getDecorView(),Gravity.LEFT|Gravity.TOP,NV1_x,NV1_y);
 		} catch(err) {
-			print(err);
+			print("load btn" + err.lineNumber + "\n" + err);
 		}
 	});
 }
