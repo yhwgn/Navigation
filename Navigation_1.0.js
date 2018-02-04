@@ -197,6 +197,13 @@ function openList(){
 
 				}
 			});
+			dialog.setNegativeButton("삭제", null);
+			dialog.setPositiveButton("닫기", null);
+			dialog.setNeutralButton("추가", new DialogInterface.OnClickListener(){
+				onClick: funciton(d){
+					pointLoc.push((pointLoc.getSize()+1)+"");
+				}
+			});
 			dialog.show();
 		}catch(err){
 			print("openList " + err.lineNumber + "\n" + err);
