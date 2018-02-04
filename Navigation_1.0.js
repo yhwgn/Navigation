@@ -1,6 +1,7 @@
 var PopupWindow = android.widget.PopupWindow;
 var LinearLayout = android.widget.LinearLayout;
 var ScrollView = android.widget.ScrollView;
+var ListView = android.widget.ListView;
 var Button = android.widget.Button;
 var EditText = android.widget.EditText;
 var TextView = android.widget.TextView;
@@ -33,6 +34,9 @@ var themeColor = {r:50, g:180, b:230};
 var NV1_x = 8;
 var NV1_y = 80;
 var bz, by, bx;
+var pointLoc = new Array();
+pointLoc.push("1");
+pointLoc.push("2");
 var navigater = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
 var sword = [
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
@@ -125,7 +129,7 @@ function getAngle(player, point){
 	var z = point.z-player.z;
 	var x = point.x-player.x;
 	var hptn = Math.sqrt((z*z)+(x*x));
-	var angle = Math.acos(z/hptn);   
+	var angle = Math.acos(z/hptn);
 	if(x>=0){
 		angle = Math.PI-angle;
 	} else {
@@ -150,7 +154,7 @@ function makeBtn(){
 			btn.setOnTouchListener(new android.view.View.OnTouchListener(){
 				onTouch: function(v, event) {
 					switch(event.action) {
-						case android.view.MotionEvent.ACTION_DOWN: 
+						case android.view.MotionEvent.ACTION_DOWN:
 							viewX = event.getX();
 							viewY = event.getY();
 							xx = event.getRawX() - viewX;
@@ -164,7 +168,7 @@ function makeBtn(){
 							break;
 						case android.view.MotionEvent.ACTION_UP:
 							if(click) {
-								//TODO
+								openList();
 							} else {
 								click = true;
 								ModPE.saveData("NV1_x",x);
@@ -176,10 +180,26 @@ function makeBtn(){
 					return true;
 				}
 			});
-			btnWindow = new PopupWindow(btn, dp(70), dp(70));
+			btnWindow = new PopupWindow(btn, dp(40), dp(30));
 			btnWindow.showAtLocation(ctx.getWindow().getDecorView(),Gravity.LEFT|Gravity.TOP,NV1_x,NV1_y);
 		} catch(err) {
-			print("load btn" + err.lineNumber + "\n" + err);
+			print("load btn " + err.lineNumber + "\n" + err);
+		}
+	});
+}
+
+function openList(){
+	ui(function(){
+		try{
+			var dialog = new AlertDialog.Builder(ctx);
+			builder.setSingleChoiceItems(pointLoc, 0, new View.OnClickListener(){
+				onClick: function(d, i){
+
+        }
+			});
+			dialog.show();
+		}catch(err){
+			print("openList " + err.lineNumber + "\n" + err);
 		}
 	});
 }
