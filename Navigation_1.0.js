@@ -34,9 +34,7 @@ var themeColor = {r:50, g:180, b:230};
 var NV1_x = 8;
 var NV1_y = 80;
 var bz, by, bx;
-var pointLoc = new Array();
-pointLoc.push("1");
-pointLoc.push("2");
+var pointLoc = ["1", "2"];
 var navigater = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
 var sword = [
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
@@ -201,7 +199,7 @@ function openList(){
 			dialog.setPositiveButton("닫기", null);
 			dialog.setNeutralButton("추가", new DialogInterface.OnClickListener(){
 				onClick: function(d){
-					pointLoc.push((pointLoc.getSize()+1)+"");
+					pointLoc.push((pointLoc.length+1)+"");
 				}
 			});
 			dialog.show();
