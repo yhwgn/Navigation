@@ -88,6 +88,9 @@ function makeBtn(){
 	ui(function(){
 		try{
 			var btn = new Button(ctx);
+			var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
+            		paintDrawable.setCornerRadius(dp(15));
+            		btn.setBackgroundDrawable(paintDrawable);
 			btn.setText("NV");
 			btn.setPadding(dp(-5), dp(-5), dp(-5), dp(-5));
 			btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 12);
@@ -123,10 +126,7 @@ function makeBtn(){
 					return true;
 				}
 			});
-            		var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
-            		paintDrawable.setCornerRadius(dp(15));
 			btnWindow = new PopupWindow(btn,dp(40),dp(30));
-            		btnWindow.setBackgroundDrawable(paintDrawable);
 			btnWindow.showAtLocation(ctx.getWindow().getDecorView(),Gravity.LEFT|Gravity.TOP,NV1_x,NV1_y);
 		} catch(err) {
 			print(err);
