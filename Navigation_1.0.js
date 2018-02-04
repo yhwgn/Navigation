@@ -64,7 +64,7 @@ var colorCode = [Color.argb(0, 0, 0, 0),
 		 Color.argb(255, 104, 78, 30),
 		 Color.argb(255, 137, 103, 39)];
 
-try{
+
 	var canvas = new Canvas(navigater);
 	var i=0;
 	for(var y=0; y<16; y++){
@@ -78,9 +78,7 @@ try{
 		}
 	}
 	ts("로딩 완료");
-} catch(err) {
-	print("load img" + err.lineNumber + "\n" + err);
-}
+
 
 function newLevel(){
 	bz = 0;
