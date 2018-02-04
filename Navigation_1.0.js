@@ -192,10 +192,10 @@ function openList(){
 	ui(function(){
 		try{
 			var dialog = new AlertDialog.Builder(ctx);
-			builder.setSingleChoiceItems(pointLoc, 0, new View.OnClickListener(){
+			dialog.setSingleChoiceItems(pointLoc, 0, new View.OnClickListener(){
 				onClick: function(d, i){
 
-        }
+				}
 			});
 			dialog.show();
 		}catch(err){
