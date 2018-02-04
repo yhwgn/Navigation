@@ -194,13 +194,13 @@ function openList(){
 			var builder = new AlertDialog.Builder(ctx);
 			var dialog = builder.create();
 			var delet = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-			if(selectNumber==0) delet.setEnable(false);
-			else delet.setEnable(true);
+			if(selectNumber==0) delet.setEnabled(false);
+			else delet.setEnabled(true);
 			builder.setSingleChoiceItems(pointLoc, selectNumber, new DialogInterface.OnClickListener(){
 				onClick: function(d, i){
 					selectNumber = i;
-					if(i==0) delet.setEnable(false);
-					else delet.setEnable(true);
+					if(i==0) delet.setEnabled(false);
+					else delet.setEnabled(true);
 				}
 			});
 			builder.setNegativeButton("삭제", null);
