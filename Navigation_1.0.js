@@ -193,7 +193,7 @@ function openList(){
 		try{
 			var dialog = new AlertDialog.Builder(ctx);
 			dialog.setTitle("Navigation_1.0");
-			dialog.setSingleChoiceItems(pointLoc, selectNumber, new DialogInterface.OnClickListener(){
+			dialog.setSingleChoiceItems(pointName, selectNumber, new DialogInterface.OnClickListener(){
 				onClick: function(d, i){
 					selectNumber = i;
 					if(i==0) d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(false);
@@ -218,9 +218,13 @@ function openList(){
 							}
 						}
 					});
+					add.show();
 				}
 			});
 			dialog.show();
+			var delet = dialog.create().getButton(AlertDialog.BUTTON_NEGATIVE);
+			if(selectNumber==0) delet.setEnabled(false);
+			else delet.setEnabled(true);
 		}catch(err){
 			print("openList " + err.lineNumber + "\n" + err);
 		}
