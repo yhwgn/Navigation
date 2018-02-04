@@ -70,7 +70,7 @@ try{
 		for(var x=0; x<16; x++){
 			if(sword[i] != 0){
 				var color = colorCode[sword[i]-1];
-				var paint = new Paint(color);
+				var paint = new Paint(Color.argb(255, 50, 180, 230));
 				canvas.drawPoint(x, y, paint);
 			}
 			i++;
