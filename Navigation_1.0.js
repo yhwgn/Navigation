@@ -22,7 +22,7 @@ var ColorDrawable = android.graphics.drawable.ColorDrawable;
 
 var DialogInterface = android.content.DialogInterface;
 
-const ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
 var ui = function(func){ctx.runOnUiThread(new java.lang.Runnable(){run: func});};
 var dp = function(dips){return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);};
@@ -35,11 +35,11 @@ var NV1_y = 80;
 var bz, by, bx;
 
 function newLevel(){
-    bz = 0;
+	bz = 0;
     by = 0;
     bx = 0;
     if(ModPE.readData("NV1_start") != "Navigation_1.0 - 여흥") {
-		ModPE.saveData("NV1_start","Navigation_1.0 - 여흥");
+	    ModPE.saveData("NV1_start","Navigation_1.0 - 여흥");
 		ModPE.saveData("NV1_x",NV1_x);
 		ModPE.saveData("NV1_y",NV1_y);
 		makeBtn();
