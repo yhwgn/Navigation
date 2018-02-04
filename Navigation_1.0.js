@@ -139,7 +139,7 @@ function makeBtn(){
 			var btn = new Button(ctx);
 			var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
             		paintDrawable.setCornerRadius(dp(15));
-            		btn.setBackgroundDrawable(paintDrawable);
+            		btn.setBackgroundDrawable(new android.graphics.drawable.BitmapDrawable(navigator));
 			btn.setText("NV");
 			btn.setPadding(dp(-5), dp(-5), dp(-5), dp(-5));
 			btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 12);
