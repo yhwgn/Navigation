@@ -89,12 +89,9 @@ function makeBtn(){
 		try{
 			var btn = new Button(ctx);
 			btn.setText("NV");
-			btn.setPadding(dp(-5),dp(-5),dp(-5),dp(-5));
-			btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP,12);
+			btn.setPadding(dp(-5), dp(-5), dp(-5), dp(-5));
+			btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 12);
 			btn.setTextColor(Color.WHITE);
-			var params = new LinearLayout.LayoutParams(-2,-2);
-			params.setMargins(dp(5),dp(5),dp(5),dp(5));
-			btn.setLayoutParams(params);
 			var viewX,viewY,x,y,xx,yy;
 			var click = true;
 			btn.setOnTouchListener(new android.view.View.OnTouchListener(){
