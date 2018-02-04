@@ -7,15 +7,12 @@ var TextView = android.widget.TextView;
 var CheckBox = android.widget.CheckBox;
 var Toast = android.widget.Toast;
 
-// import android.app.*;
 var Dialog = android.app.Dialog;
 var AlertDialog = android.app.AlertDialog;
 
-// import android.view.*;
 var View = android.view.View;
 var Gravity = android.view.Gravity;
 
-// import android.graphics.*;
 var Color = android.graphics.Color;
 var Bitmap = android.graphics.Bitmap;
 var Canvas = android.graphics.Canvas;
@@ -23,12 +20,10 @@ var Paint = android.graphics.Paint;
 var BitmapDrawable = android.graphics.drawable.BitmapDrawable;
 var ColorDrawable = android.graphics.drawable.ColorDrawable;
 
-// import android.content.*;
 var DialogInterface = android.content.DialogInterface;
 
 const ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
-/* Copyright (c) 2014 Chalk */
 var ui = function(func){ctx.runOnUiThread(new java.lang.Runnable(){run: func});};
 var dp = function(dips){return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);};
 var ts = function(mesg){ui(function(){Toast.makeText(ctx,mesg,1).show();});};
