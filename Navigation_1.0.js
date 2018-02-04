@@ -51,6 +51,7 @@ var sword = [
 	4, 4, 9, 8, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0,
 	4, 5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
 var colorCode = [Color.argb(0, 0, 0, 0),
 		 Color.argb(255, 14, 63, 54),
 		 Color.argb(255, 51, 235, 203),
@@ -64,7 +65,7 @@ var colorCode = [Color.argb(0, 0, 0, 0),
 		 Color.argb(255, 137, 103, 39)];
 
 try{
-	var bitmap = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
+	navigater = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
 	var canvas = new Canvas(bitmap);
 	var i=0;
 	for(var y=0; y<16; y++){
@@ -77,7 +78,6 @@ try{
 			i++;
 		}
 	}
-	navigater = bitmap;
 	ts("로딩 완료");
 } catch(err) {
 	print("load img" + err.lineNumber + "\n" + err);
@@ -139,8 +139,7 @@ function makeBtn(){
 			var btn = new Button(ctx);
 			var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
             		paintDrawable.setCornerRadius(dp(15));
-            		btn.setBackgroundDrawable(new android.graphics.drawable.BitmapDrawable(navigater));
-			//btn.setBackgroundDrawable(new android.graphics.drawable.BitmapDrawable(Bitmap.createScaledBitmap(navigater, 160, 160, false)));
+            		btn.setBackgroundDrawable(new android.graphics.drawable.BitmapDrawable(Bitmap.createScaledBitmap(navigater, 160, 160, false)));
 			btn.setText("NV");
 			btn.setPadding(dp(-5), dp(-5), dp(-5), dp(-5));
 			btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 12);
