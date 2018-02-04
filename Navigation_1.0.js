@@ -69,8 +69,11 @@ try{
 	var i=0;
 	for(var x=0; x<16; X++){
 		for(var y=0; y<16; y++){
-			var paint = new Paint(colorCode[i]);
-			canvas.drawPoint(x, y, paint);
+			if(sword[i] != 0){
+				var color = colorCode[sword[i]-1];
+				var paint = new Paint(color);
+				canvas.drawPoint(x, y, paint);
+			}
 			i++;
 		}
 	}
