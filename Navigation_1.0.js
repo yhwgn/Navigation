@@ -34,7 +34,9 @@ var themeColor = {r:50, g:180, b:230};
 var NV1_x = 8;
 var NV1_y = 80;
 var bz, by, bx;
-var pointLoc = ["1", "2"];
+var selectNumber = 0;
+var pointName = ["길찾기 종료"];
+var pointLoc = ["termination"];
 var navigater = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
 var sword = [
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
@@ -189,17 +191,36 @@ function makeBtn(){
 function openList(){
 	ui(function(){
 		try{
-			var dialog = new AlertDialog.Builder(ctx);
-			dialog.setSingleChoiceItems(pointLoc, 0, new DialogInterface.OnClickListener(){
+			var builder = new AlertDialog.Builder(ctx);
+			var dialog = builder.create();
+			var delet = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+			if(selectNumber==0) delet.setEnable(false);
+			else delet.setEnable(true);
+			builder.setSingleChoiceItems(pointLoc, selectNumber, new DialogInterface.OnClickListener(){
 				onClick: function(d, i){
-
+					selectNumber = i;
+					if(i==0) delet.setEnable(false);
+					else delet.setEnable(true);
 				}
 			});
-			dialog.setNegativeButton("삭제", null);
-			dialog.setPositiveButton("닫기", null);
-			dialog.setNeutralButton("추가", new DialogInterface.OnClickListener(){
+			builder.setNegativeButton("삭제", null);
+			builder.setPositiveButton("닫기", null);
+			builder.setNeutralButton("추가", new DialogInterface.OnClickListener(){
 				onClick: function(d){
-					pointLoc.push((pointLoc.length+1)+"");
+					var name = new EditText(ctx);
+					var add = new AlertDialog.Builder(ctx);
+					add.setView(name);
+					add.setNegativeButton("취소", null);
+					add.setPositiveButton("저장", new DialogInterface.OnClickListener(){
+						onClick: function(d){
+							if(!name.getText.equals("")){
+								pointLoc.push(getPlayerX() + ":" + getPlayerY() + ":" + getPlayerZ());
+							} else {
+								ts("목적지 이름을 작성해 주십시오.");
+								add.show();
+							}
+						}
+					});
 				}
 			});
 			dialog.show();
