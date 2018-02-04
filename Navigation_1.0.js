@@ -191,18 +191,18 @@ function makeBtn(){
 function openList(){
 	ui(function(){
 		try{
-			var dialog = new AlertDialog.Builder(ctx);
-			dialog.setTitle("Navigation_1.0");
-			dialog.setSingleChoiceItems(pointName, selectNumber, new DialogInterface.OnClickListener(){
+			var builder = new AlertDialog.Builder(ctx);
+			builder.setTitle("Navigation_1.0");
+			builder.setSingleChoiceItems(pointName, selectNumber, new DialogInterface.OnClickListener(){
 				onClick: function(d, i){
 					selectNumber = i;
 					if(i==0) d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(false);
 					else d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(true);
 				}
 			});
-			dialog.setNegativeButton("삭제", null);
-			dialog.setPositiveButton("닫기", null);
-			dialog.setNeutralButton("추가", new DialogInterface.OnClickListener(){
+			builder.setNegativeButton("삭제", null);
+			builder.setPositiveButton("닫기", null);
+			builder.setNeutralButton("추가", new DialogInterface.OnClickListener(){
 				onClick: function(d){
 					var name = new EditText(ctx);
 					var add = new AlertDialog.Builder(ctx);
@@ -221,6 +221,9 @@ function openList(){
 					add.show();
 				}
 			});
+			var dialog = builder.create();
+			if(selectNumber==0) dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(false);
+			else dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(true);
 			dialog.show();
 			var delet = dialog.create().getButton(AlertDialog.BUTTON_NEGATIVE);
 			if(selectNumber==0) delet.setEnabled(false);
