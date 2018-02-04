@@ -212,6 +212,7 @@ function openList(){
 						onClick: function(d){
 							try{
 								if(!(name.getText().toString().equals(""))){
+									pointName.push(name.getText().toString());
 									pointLoc.push(getPlayerX() + ":" + getPlayerY() + ":" + getPlayerZ());
 								} else {
 									ts("목적지 이름을 작성해 주십시오.");
