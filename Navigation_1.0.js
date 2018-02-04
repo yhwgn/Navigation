@@ -35,11 +35,11 @@ var NV1_y = 80;
 var bz, by, bx;
 
 function newLevel(){
-    bz = 0;
-    by = 0;
-    bx = 0;
-    if(ModPE.readData("NV1_start") != "Navigation_1.0 - 여흥") {
-	ModPE.saveData("NV1_start","Navigation_1.0 - 여흥");
+	bz = 0;
+	by = 0;
+	bx = 0;
+	if(ModPE.readData("NV1_start") != "Navigation_1.0 - 여흥"){
+		ModPE.saveData("NV1_start","Navigation_1.0 - 여흥");
 		ModPE.saveData("NV1_x",NV1_x);
 		ModPE.saveData("NV1_y",NV1_y);
 		makeBtn();
@@ -50,9 +50,9 @@ function newLevel(){
 	}
 }
 
-function leaveGame() {
-	ui(function() {
-		if(btnWindow != null) {
+function leaveGame(){
+	ui(function(){
+		if(btnWindow != null){
 			btnWindow.dismiss();
 			btnWindow = null;
 		}
@@ -72,21 +72,21 @@ function modTick(){
 }*/
 
 function getAngle(player, point){
-    var z = point.z-player.z;
-    var x = point.x-player.x;
-    var hptn = Math.sqrt((z*z)+(x*x));
-    var angle = Math.acos(z/hptn);   
-    if(x>=0){
-        angle = Math.PI-angle;
-    } else {
-        angle = Math.PI+angle;
-    }
-    return angle;
+	var z = point.z-player.z;
+	var x = point.x-player.x;
+	var hptn = Math.sqrt((z*z)+(x*x));
+	var angle = Math.acos(z/hptn);   
+	if(x>=0){
+		angle = Math.PI-angle;
+	} else {
+		angle = Math.PI+angle;
+	}
+	return angle;
 }
 
-function makeBtn() {
-	ui(function() {
-		try {
+function makeBtn(){
+	ui(function(){
+		try{
 			var btn = new Button(ctx);
 			btn.setText("NV");
 			btn.setPadding(dp(-5),dp(-5),dp(-5),dp(-5));
@@ -97,7 +97,7 @@ function makeBtn() {
 			btn.setLayoutParams(params);
 			var viewX,viewY,x,y,xx,yy;
 			var click = true;
-			btn.setOnTouchListener(new android.view.View.OnTouchListener() {
+			btn.setOnTouchListener(new android.view.View.OnTouchListener(){
 				onTouch: function(v, event) {
 					switch(event.action) {
 						case android.view.MotionEvent.ACTION_DOWN: 
@@ -105,13 +105,13 @@ function makeBtn() {
 							viewY = event.getY();
 							xx = event.getRawX() - viewX;
 							yy = event.getRawY() - viewY;
-						break;
+							break;
 						case android.view.MotionEvent.ACTION_MOVE:
 							x = event.getRawX() - viewX;
 							y = event.getRawY() - viewY;
 							if(Math.abs(x-xx) > 100 || Math.abs(y-yy) > 100) click = false;
 							if(!click) btnWindow.update(x,y,dp(40),dp(30),true);
-						break;
+							break;
 						case android.view.MotionEvent.ACTION_UP:
 							if(click) {
 								//TODO
@@ -121,15 +121,15 @@ function makeBtn() {
 								ModPE.saveData("SW_y",y);
 								ts("위치가 변경되었습니다.");
 							}
-						break;
+							break;
 					}
 					return true;
 				}
 			});
-            var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
-            paintDrawable.setCornerRadius(dp(15));
+            		var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
+            		paintDrawable.setCornerRadius(dp(15));
 			btnWindow = new PopupWindow(btn,dp(40),dp(30));
-            btnWindow.setBackgroundDrawable(paintDrawable);
+            		btnWindow.setBackgroundDrawable(paintDrawable);
 			btnWindow.showAtLocation(ctx.getWindow().getDecorView(),Gravity.LEFT|Gravity.TOP,SW_x,SW_y);
 		} catch(err) {
 			print(err);
