@@ -29,8 +29,7 @@ var dp = function(dips){return Math.ceil(dips * ctx.getResources().getDisplayMet
 var ts = function(mesg){ui(function(){Toast.makeText(ctx,mesg,1).show();});};
 
 var btnWindow = null;
-var warpArray = new Array();
-var btnColor = [255,50,180,230];
+var themeColor = {r:50, g:180, b:230};
 var NV1_x = 8;
 var NV1_y = 80;
 var bz, by, bx;
@@ -127,7 +126,7 @@ function makeBtn() {
 					return true;
 				}
 			});
-            var paintDrawable = new PaintDrawable(Color.rgb());
+            var paintDrawable = new PaintDrawable(Color.rgb(themeColor.r, themeColor.g, themeColor.b));
             paintDrawable.setCornerRadius(dp(15));
 			btnWindow = new PopupWindow(btn,dp(40),dp(30));
             btnWindow.setBackgroundDrawable(paintDrawable);
