@@ -200,7 +200,7 @@ function openList(){
 			dialog.setNegativeButton("삭제", null);
 			dialog.setPositiveButton("닫기", null);
 			dialog.setNeutralButton("추가", new DialogInterface.OnClickListener(){
-				onClick: funciton(d){
+				onClick: function(d){
 					pointLoc.push((pointLoc.getSize()+1)+"");
 				}
 			});
