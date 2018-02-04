@@ -210,11 +210,15 @@ function openList(){
 					add.setNegativeButton("취소", null);
 					add.setPositiveButton("저장", new DialogInterface.OnClickListener(){
 						onClick: function(d){
-							if(!name.getText.equals("")){
-								pointLoc.push(getPlayerX() + ":" + getPlayerY() + ":" + getPlayerZ());
-							} else {
-								ts("목적지 이름을 작성해 주십시오.");
-								add.show();
+							try{
+								if(!name.getText.equals("")){
+									pointLoc.push(getPlayerX() + ":" + getPlayerY() + ":" + getPlayerZ());
+								} else {
+									ts("목적지 이름을 작성해 주십시오.");
+									add.show();
+								}
+							}catch(err){
+								print(err.lineNumber + "\n" + err);
 							}
 						}
 					});
