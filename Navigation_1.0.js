@@ -33,7 +33,7 @@ var themeColor = {r:50, g:180, b:230};
 var NV1_x = 8;
 var NV1_y = 80;
 var bz, by, bx;
-var navigater;
+var navigater = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
 var sword = [
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 1,
@@ -65,8 +65,7 @@ var colorCode = [Color.argb(0, 0, 0, 0),
 		 Color.argb(255, 137, 103, 39)];
 
 try{
-	navigater = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
-	var canvas = new Canvas(bitmap);
+	var canvas = new Canvas(navigater);
 	var i=0;
 	for(var y=0; y<16; y++){
 		for(var x=0; x<16; x++){
