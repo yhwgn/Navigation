@@ -33,6 +33,53 @@ var themeColor = {r:50, g:180, b:230};
 var NV1_x = 8;
 var NV1_y = 80;
 var bz, by, bx;
+var navigater;
+var sword = [
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 1,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 2, 1,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 2, 1, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 2, 1, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 2, 1, 0, 0, 0,
+	0, 0, 4, 4, 0, 0, 0, 1, 2, 3, 2, 1, 0, 0, 0, 0,
+	0, 0, 4, 6, 4, 0, 1, 2, 3, 2, 1, 0, 0, 0, 0, 0,
+	0, 0, 0, 4, 5, 4, 2, 3, 2, 1, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 4, 5, 4, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 4, 5, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 7, 9, 4, 5, 6, 4, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 7,10, 8, 0, 4, 4, 6, 4, 0, 0, 0, 0, 0, 0,
+	4, 4, 9, 8, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0,
+	4, 5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var colorCode = [Color.rgb(14, 63, 54),
+		 Color.rgb(51, 235, 203),
+		 Color.rgb(43, 199, 172),
+		 Color.rgb(8, 37, 32),
+		 Color.rgb(30, 138, 119),
+		 Color.rgb(21, 99, 85),
+		 Color.rgb(73, 54, 21),
+		 Color.rgb(40, 30, 11),
+		 Color.rgb(104, 78, 30),
+		 Color.rgb(137, 103, 39)];
+
+try{
+	var bitmap = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
+	var canvas = new Canvas(bitmap);
+	var paint = new Paint();
+	var i=0;
+	for(var x=0; x<16; X++;){
+		for(var y=0; y<16; y++;){
+			var paint = new Paint();
+			paint.setColor(colorCode[i]);
+			canvas.drawPoint(x, y, paint);
+			i++;
+		}
+	}
+	navigater = bitmap;
+	ts("로딩 완료");
+} catch(err) {
+	print(err);
+}
 
 function newLevel(){
 	bz = 0;
@@ -126,7 +173,8 @@ function makeBtn(){
 					return true;
 				}
 			});
-			btnWindow = new PopupWindow(btn,dp(40),dp(30));
+			btnWindow = new PopupWindow(btn, dp(70), dp(70));
+			btnWindow.setBackgroundDrawable(new android.graphics.drawable.BitmapDrawable(navigater));
 			btnWindow.showAtLocation(ctx.getWindow().getDecorView(),Gravity.LEFT|Gravity.TOP,NV1_x,NV1_y);
 		} catch(err) {
 			print(err);
