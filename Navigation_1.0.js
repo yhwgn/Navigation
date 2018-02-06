@@ -92,6 +92,7 @@ var colorCode = [Color.argb(0, 0, 0, 0),
 var diamond = 0;
 var gold =1;
 function drawSword(type){
+	var result = Bitmap.createBitmap(230, 230, Bitmap.Config.ARGB_8888);
 	var bitmap = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
 	var canvas = new Canvas(bitmap);
 	var i=0;
@@ -106,15 +107,16 @@ function drawSword(type){
 			i++;
 		}
 	}
-	return bitmap;
+	canvas = new Canvas(result);
+	canvas.drawBitmap(Bitmap.createScaledBitmap(bitmap, 160, 160, false), 35, 35, new Paint());
+	return result;
 }
 
-diaSword = Bitmap.createScaledBitmap(drawSword(diamond), 160, 160, false);
-goldSword = Bitmap.createScaledBitmap(drawSword(gold), 160, 160, false);
+diaSword = drawSword(diamond);
+goldSword = drawSword(gold);
 
 function newLevel(){
 	bz = 0;
-	by = 0;
 	bx = 0;
 	if(ModPE.readData("NV1_start") != "Navigation_1.0 - 여흥"){
 		ModPE.saveData("NV1_start","Navigation_1.0 - 여흥");
@@ -141,23 +143,22 @@ function modTick(){
 	if(isRun){
 		var player = {z:getPlayerZ(), x:getPlayerX()};
     	var point = {z:bz, x:bx};
-		clientMessage(getAngle(player, point) + " : " + getYaw());
-		ui(function(){
-			try{
-				var matrix = new Matrix();
-				navigater.setScaleType(ImageView.ScaleType.MATRIX);   //required
-				matrix.postRotate(getAngle(player, point), 80, 80);
-				navigater.setImageMatrix(matrix);
-				/*var angle = getAngle(player, point);
-				var an = new RotateAnimation(0, angle, 25, 25);
-				an.setDuration(0);
-				an.setFillAfter(true);
-				navigater.setAnimation(an);*/
-			}catch(err){
-				print(err);
-			}
-		});
+		//clientMessage(Math.floor(getAngle(player, point)) + " : " + Math.floor(getYaw()));
+		rotate(getAngle(player, point));
 	}
+}
+
+function rotate(angle){
+	ui(function(){
+		try{
+			var an = new RotateAnimation(angle, angle, dp(25), dp(25));
+			an.setDuration(0);
+			an.setFillAfter(true);
+			navigater.startAnimation(an);
+		}catch(err){
+			print(err);
+		}
+	});
 }
 
 function getAngle(player, point){
@@ -170,7 +171,7 @@ function getAngle(player, point){
 	} else {
 		angle = Math.PI+angle;
 	}
-	return (angle*(180/Math.PI));
+	return (angle*(180/Math.PI))-getYaw()+135;
 }
 
 function makeBtn(){
@@ -229,6 +230,7 @@ function openList(){
 						d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(false);
 						navigater.setImageBitmap(goldSword);
 						isRun = false;
+						rotate(0);
 					}else{
 						d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(true);
 						navigater.setImageBitmap(diaSword)
@@ -240,7 +242,18 @@ function openList(){
 					}
 				}
 			});
-			builder.setNegativeButton("삭제", null);
+			builder.setNegativeButton("삭제", new DialogInterface.OnClickListener(){
+				onClick: function(d){
+					if(selectNumber!=0){
+						isRun = false;
+						pointName.splice(selectNumber, 1);
+						pointLoc.splice(selectNumber, 1);
+						selectNumber = 0;
+						rotate(0);
+						navigater.setImageBitmap(goldSword);
+					}
+				}
+			});
 			builder.setPositiveButton("닫기", null);
 			builder.setNeutralButton("추가", new DialogInterface.OnClickListener(){
 				onClick: function(d){
