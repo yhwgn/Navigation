@@ -39,7 +39,7 @@ var btnWindow = null;
 var themeColor = {r:50, g:180, b:230};
 var NV1_x = 8;
 var NV1_y = 80;
-var bz, by, bx;
+var bz, bx;
 var selectNumber = 0;
 var pointName = ["길찾기 종료"];
 var pointLoc = ["termination"];
@@ -237,7 +237,6 @@ function openList(){
 						isRun = true;
 						var point = pointLoc[i].split(",");
 						bx = point[0];
-						by = point[1];
 						bz = point[2];
 					}
 				}
@@ -249,8 +248,8 @@ function openList(){
 						pointName.splice(selectNumber, 1);
 						pointLoc.splice(selectNumber, 1);
 						selectNumber = 0;
-						rotate(0);
 						navigater.setImageBitmap(goldSword);
+						rotate(0);
 					}
 				}
 			});
@@ -266,7 +265,7 @@ function openList(){
 						onClick: function(d){
 							try{
 								pointName.push(name.getText().toString());
-								pointLoc.push(getPlayerX() + "," + getPlayerY() + "," + getPlayerZ());
+								pointLoc.push(getPlayerX() + "," + getPlayerZ());
 							}catch(err){
 								print(err.lineNumber + "\n" + err);
 							}
