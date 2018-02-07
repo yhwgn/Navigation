@@ -205,7 +205,7 @@ function rotate(angle){
 	});
 }
 
-var endRotate = new Thread(){
+var endRotate = new Thread({
 	run:function(){
 		try{
 			Thread.sleep(1);
@@ -214,7 +214,7 @@ var endRotate = new Thread(){
 			print(err);
 		}
 	}
-};
+});
 
 function getAngle(player, point){
 	var z = point.z-player.z;
