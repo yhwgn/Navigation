@@ -46,6 +46,7 @@ var navigater = null;
 var diaSword = null;
 var goldSword = null;
 var isRun = false;
+var count = 0;
 var path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/games/com.mojang/navigation";
 var world;
 var sword = [
@@ -186,9 +187,13 @@ function saveData(){
 function modTick(){
 	if(isRun){
 		var player = {z:getPlayerZ(), x:getPlayerX()};
-    	var point = {z:bz, x:bx};
+		var point = {z:bz, x:bx};
 		var angle = getAngle(player, point)
 		if(!isNaN(angle))rotate(angle);
+	}
+	if(!isRun && count<1){
+	 count++;
+	 rotate(0);
 	}
 }
 
@@ -204,17 +209,6 @@ function rotate(angle){
 		}
 	});
 }
-
-var endRotate = new Thread({
-	run:function(){
-		try{
-			Thread.sleep(1);
-			rotate(0);
-		}catch(err){
-			print(err);
-		}
-	}
-});
 
 function getAngle(player, point){
 	var z = point.z-player.z;
@@ -284,8 +278,8 @@ function openList(){
 					if(i==0){
 						d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(false);
 						navigater.setImageBitmap(goldSword);
+						count = 0;
 						isRun = false;
-						endRotate.start();
 					}else{
 						d.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(true);
 						navigater.setImageBitmap(diaSword)
@@ -299,12 +293,12 @@ function openList(){
 			builder.setNegativeButton("삭제", new DialogInterface.OnClickListener({
 				onClick: function(d){
 					if(selectNumber!=0){
-						isRun = false;
+						count = 0;
+					isRun = false;
 						pointName.splice(selectNumber, 1);
 						pointLoc.splice(selectNumber, 1);
 						selectNumber = 0;
 						navigater.setImageBitmap(goldSword);
-						endRotate.start();
 					}
 				}
 			}));
