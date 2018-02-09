@@ -78,7 +78,7 @@ var colorCode = [Color.argb(0, 0, 0, 0),
 		 Color.argb(255, 40, 30, 11),
 		 Color.argb(255, 104, 78, 30),
 		 Color.argb(255, 137, 103, 39),
-		 
+
 		 Color.rgb(0, 0, 0),
 		 Color.rgb(96, 96, 56),
 		 Color.rgb(234, 238, 87),
@@ -307,8 +307,12 @@ function openList(){
 				onClick: function(d){
 					var name = new EditText(ctx);
 					var add = new AlertDialog.Builder(ctx);
+					var params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT)
+					params.setMargins(dp(5), dp(5), dp(5), dp(5));
 					add.setView(name);
 					add.setTitle("목적지 이름");
+					add.getBackground().setColorFilter(android.graphics.Color.rgb(50,180,230),android.graphics.PorterDuff.Mode.SRC_IN);
+					add.setLayoutParams(params);
 					add.setNegativeButton("취소", null);
 					add.setPositiveButton("저장", new DialogInterface.OnClickListener({
 						onClick: function(d){
