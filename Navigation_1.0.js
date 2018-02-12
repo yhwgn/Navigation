@@ -313,7 +313,7 @@ function openList(){
 						var params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT)
 						params.setMargins(dp(5), dp(5), dp(5), dp(5));
 						name.getBackground().setColorFilter(android.graphics.Color.rgb(50,180,230),android.graphics.PorterDuff.Mode.SRC_IN);
-						name.setLayoutParams(params);
+						//name.setLayoutParams(params);
 						layout.addView(name);
 						add.setTitle("목적지 이름");
 						add.setView(layout);
