@@ -315,8 +315,7 @@ function openList(){
 						//name.getBackground().setColorFilter(android.graphics.Color.rgb(50,180,230),android.graphics.PorterDuff.Mode.SRC_IN);
 						name.setLayoutParams(params);
 						layout.addView(name);
-						add.setTitle("목적지 이름");
-						add.setMessage("asdf");
+						//add.setTitle("목적지 이름");
 						add.setView(layout);
 						add.setNegativeButton("취소", null);
 						add.setPositiveButton("저장", new DialogInterface.OnClickListener({
