@@ -311,8 +311,8 @@ function openList(){
 					params.setMargins(dp(5), dp(5), dp(5), dp(5));
 					add.setView(name);
 					add.setTitle("목적지 이름");
-					add.getBackground().setColorFilter(android.graphics.Color.rgb(50,180,230),android.graphics.PorterDuff.Mode.SRC_IN);
-					add.setLayoutParams(params);
+					name.getBackground().setColorFilter(android.graphics.Color.rgb(50,180,230),android.graphics.PorterDuff.Mode.SRC_IN);
+					.setLayoutParams(params);
 					add.setNegativeButton("취소", null);
 					add.setPositiveButton("저장", new DialogInterface.OnClickListener({
 						onClick: function(d){
