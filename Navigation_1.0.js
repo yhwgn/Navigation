@@ -1,4 +1,5 @@
 var PopupWindow = android.widget.PopupWindow;
+var LinearLayout = android.widget.LinearLayout;
 var EditText = android.widget.EditText;
 var ImageView = android.widget.ImageView
 var Toast = android.widget.Toast;
