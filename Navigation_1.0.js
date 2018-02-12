@@ -305,37 +305,41 @@ function openList(){
 			builder.setPositiveButton("닫기", null);
 			builder.setNeutralButton("추가", new DialogInterface.OnClickListener({
 				onClick: function(d){
-					var name = new EditText(ctx);
-					var add = new AlertDialog.Builder(ctx);
-					var params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT)
-					params.setMargins(dp(5), dp(5), dp(5), dp(5));
-					add.setView(name);
-					add.setTitle("목적지 이름");
-					name.getBackground().setColorFilter(android.graphics.Color.rgb(50,180,230),android.graphics.PorterDuff.Mode.SRC_IN);
-					name.setLayoutParams(params);
-					add.setNegativeButton("취소", null);
-					add.setPositiveButton("저장", new DialogInterface.OnClickListener({
-						onClick: function(d){
-							try{
-								pointName.push(name.getText().toString());
-								pointLoc.push(getPlayerX() + "," + getPlayerZ());
-							}catch(err){
-								print(err.lineNumber + "\n" + err);
+					try{
+						var name = new EditText(ctx);
+						var add = new AlertDialog.Builder(ctx);
+						var params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT)
+						params.setMargins(dp(5), dp(5), dp(5), dp(5));
+						add.setView(name);
+						add.setTitle("목적지 이름");
+						name.getBackground().setColorFilter(android.graphics.Color.rgb(50,180,230),android.graphics.PorterDuff.Mode.SRC_IN);
+						name.setLayoutParams(params);
+						add.setNegativeButton("취소", null);
+						add.setPositiveButton("저장", new DialogInterface.OnClickListener({
+							onClick: function(d){
+								try{
+									pointName.push(name.getText().toString());
+									pointLoc.push(getPlayerX() + "," + getPlayerZ());
+								}catch(err){
+									print(err.lineNumber + "\n" + err);
+								}
 							}
-						}
-					}));
-					var addDialog = add.create();
-					addDialog.show();
-					var save = addDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-					save.setEnabled(false);
-					name.addTextChangedListener(new TextWatcher({
-						onTextChanged: function(s, start, before, count){},
-						beforeTextChanged: function(s, start, count, after){},
-						afterTextChanged: function(s){
-							if(name.getText().toString().equals("") || name.getText().toString().indexOf(":")!=-1 || name.getText().toString().indexOf(",")!=-1) save.setEnabled(false);
-							else save.setEnabled(true);
-						}
-					}));
+						}));
+						var addDialog = add.create();
+						addDialog.show();
+						var save = addDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+						save.setEnabled(false);
+						name.addTextChangedListener(new TextWatcher({
+							onTextChanged: function(s, start, before, count){},
+							beforeTextChanged: function(s, start, count, after){},
+							afterTextChanged: function(s){
+								if(name.getText().toString().equals("") || name.getText().toString().indexOf(":")!=-1 || name.getText().toString().indexOf(",")!=-1) save.setEnabled(false);
+								else save.setEnabled(true);
+							}
+						}));
+					}catch(err){
+						print(err);
+					}
 				}
 			}));
 			var dialog = builder.create();
