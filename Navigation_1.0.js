@@ -263,7 +263,8 @@ function makeBtn(){
 			navigater.setOnLongClickListener(new View.OnLongClickListener({
 				onLongClick: function(v){
 					try{
-						ts("ⓒ 2018. 여흥 All rights reserved.")
+						ts("ⓒ 2018. 여흥 All rights reserved.");
+						return true;
 					}catch(err){
 						print(err);
 					}
