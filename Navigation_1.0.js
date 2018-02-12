@@ -311,9 +311,9 @@ function openList(){
 						var name = new EditText(ctx);
 						var add = new AlertDialog.Builder(ctx);
 						var params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT)
-						params.setMargins(dp(5), dp(5), dp(5), dp(5));
+						//params.setMargins(dp(5), dp(5), dp(5), dp(5));
 						name.getBackground().setColorFilter(android.graphics.Color.rgb(50,180,230),android.graphics.PorterDuff.Mode.SRC_IN);
-						//name.setLayoutParams(params);
+						layout.setLayoutParams(params);
 						layout.addView(name);
 						add.setTitle("목적지 이름");
 						add.setView(layout);
