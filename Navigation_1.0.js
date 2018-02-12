@@ -248,15 +248,16 @@ function makeBtn(){
 							if(!click) btnWindow.update(x,y,dp(50),dp(50),true);
 							break;
 						case MotionEvent.ACTION_UP:
-							if(click && !isLongClick) {
-								openList();
-							} else {
-								click = true;
-								ModPE.saveData("NV1_x",x);
-								ModPE.saveData("NV1_y",y);
-								ts("위치가 변경되었습니다.");
-							}
-							isLongClick = false;
+							if(!isLongClick){
+								if(click) {
+									openList();
+								} else {
+									click = true;
+									ModPE.saveData("NV1_x",x);
+									ModPE.saveData("NV1_y",y);
+									ts("위치가 변경되었습니다.");
+								}
+							} else isLongClick = false;
 							break;
 					}
 					return false;
