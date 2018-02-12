@@ -257,7 +257,7 @@ function makeBtn(){
 							}
 							break;
 					}
-					return true;
+					return false;
 				}
 			}));
 			navigater.setOnLongClickListener(new View.OnLongClickListener({
