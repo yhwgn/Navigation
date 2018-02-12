@@ -47,6 +47,7 @@ var navigater = null;
 var diaSword = null;
 var goldSword = null;
 var isRun = false;
+var isLongClick = false;
 var count = 0;
 var path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/games/com.mojang/navigation";
 var world;
@@ -247,7 +248,7 @@ function makeBtn(){
 							if(!click) btnWindow.update(x,y,dp(50),dp(50),true);
 							break;
 						case MotionEvent.ACTION_UP:
-							if(click) {
+							if(click && !isLongClick) {
 								openList();
 							} else {
 								click = true;
@@ -255,6 +256,7 @@ function makeBtn(){
 								ModPE.saveData("NV1_y",y);
 								ts("위치가 변경되었습니다.");
 							}
+							isLongClick = false;
 							break;
 					}
 					return false;
@@ -263,6 +265,7 @@ function makeBtn(){
 			navigater.setOnLongClickListener(new View.OnLongClickListener({
 				onLongClick: function(v){
 					try{
+						isLongClick = true;
 						ts("ⓒ 2018. 여흥 All rights reserved.");
 						return true;
 					}catch(err){
