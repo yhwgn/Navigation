@@ -316,6 +316,7 @@ function openList(){
 						name.setLayoutParams(params);
 						layout.addView(name);
 						add.setTitle("목적지 이름");
+						add.setMessage("asdf");
 						add.setView(layout);
 						add.setNegativeButton("취소", null);
 						add.setPositiveButton("저장", new DialogInterface.OnClickListener({
