@@ -81,17 +81,17 @@ var colorCode = [Color.parseColor("#000000"),
 		 Color.parseColor("#684e1e"),
 		 Color.parseColor("#896727"),
 
-		 Color.rgb(0, 0, 0),
-		 Color.rgb(96, 96, 56),
-		 Color.rgb(234, 238, 87),
-		 Color.rgb(205, 208, 80),
-		 Color.rgb(74, 75, 51),
-		 Color.rgb(156, 158, 69),
-		 Color.rgb(124, 126, 62),
-		 Color.rgb(73, 54, 21),
-		 Color.rgb(40, 30, 11),
-		 Color.rgb(104, 78, 30),
-		 Color.rgb(137, 103, 39)];
+		 Color.parseColor("#0e3f36"),
+		 Color.parseColor("#606038"),
+		 Color.parseColor("#eaee57"),
+		 Color.parseColor("#cdd050"),
+		 Color.parseColor("#4a4b33"),
+		 Color.parseColor("#9c9e45"),
+	 	 Color.parseColor("#7c7e3e"),
+		 Color.parseColor("#493615"),
+		 Color.parseColor("#281e0b"),
+		 Color.parseColor("#684e1e"),
+		 Color.parseColor("#896727")];
 
 var diamond = 0;
 var gold =1;
